@@ -1,6 +1,7 @@
-torch>=2.0
+--extra-index-url https://download.pytorch.org/whl/cu126
+torch==2.7.1+cu126
+unsloth[windows] @ git+https://github.com/unslothai/unsloth.git
+datasets
 transformers>=4.55.0
 peft>=0.10.0
-unsloth>=0.3.0
-datasets
 bitsandbytes

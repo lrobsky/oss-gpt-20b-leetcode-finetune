@@ -40,9 +40,10 @@ prompt = "Explain the Two Sum problem in Python."
 # Load base model + adapter weights
 model, tokenizer = FastLanguageModel.from_pretrained(
     base_model,
-    max_seq_length=2048,
-    load_in_4bit=load_in_4bit
-)
+    max_seq_length=512,
+    load_in_4bit=load_in_4bit,
+    device_map="auto")
+
 model = FastLanguageModel.get_peft_model(model, adapter_model)
 # Enable inference
 FastLanguageModel.for_inference(model) 
