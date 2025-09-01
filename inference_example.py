@@ -40,7 +40,7 @@ prompt = "Explain the Two Sum problem in Python."
 # Load base model + adapter weights
 model, tokenizer = FastLanguageModel.from_pretrained(
     base_model,
-    max_seq_length=512,
+    max_seq_length=1024,
     load_in_4bit=load_in_4bit,
     device_map="auto")
 
@@ -57,7 +57,7 @@ input_ids = tokenizer.apply_chat_template(messages, add_generation_prompt=True, 
 
 # Stream generation
 streamer = TextStreamer(tokenizer, skip_prompt=True)
-outputs = model.generate(input_ids, streamer=streamer, max_new_tokens=128, pad_token_id=tokenizer.eos_token_id)
+outputs = model.generate(input_ids, streamer=streamer, max_new_tokens=128, pad_token_id=tokenizer.eos_token_id) # change max_new_tokens depending on need
 print("Model output : ")
 print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 
@@ -74,7 +74,8 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 # tokenizer = AutoTokenizer.from_pretrained(base_model)
 
 # inputs = tokenizer(prompt, return_tensors="pt").to(device) #move tensor to proper same device
-# outputs = model.generate(**inputs, max_new_tokens=128)
+# outputs = model.generate(**inputs, max_new_tokens=128) # change max_new_tokens depending on need
 # print("Model output : ")
 # print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+
 
