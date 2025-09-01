@@ -44,7 +44,8 @@ model, tokenizer = FastLanguageModel.from_pretrained(
     load_in_4bit=load_in_4bit,
     device_map="auto")
 
-model = FastLanguageModel.get_peft_model(model, adapter_model)
+
+model = FastLanguageModel.get_peft_model(model = model, adapter_name = adapter_model)
 # Enable inference
 FastLanguageModel.for_inference(model) 
 
